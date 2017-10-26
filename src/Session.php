@@ -7,6 +7,8 @@ namespace Endeavors\MaxMD\Api\Auth;
  */
 class Session
 {
+    private static $instance = null;
+
     protected $sessionId;
 
     protected $loginTime;
@@ -16,6 +18,20 @@ class Session
         $this->sessionId = $sessionId;
 
         $this->loginTime = null !== $sessionId ? time() : null;
+    }
+
+    final private static function instance()
+    {
+        return static::$instance;
+    }
+
+    final public static function getInstance($sessionId = null)
+    {
+        if( null === static::instance() ) {
+            static::$instance = new Session($sessionId);
+        }
+
+        return static::instance();
     }
     
     /**

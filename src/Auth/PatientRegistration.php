@@ -2,10 +2,10 @@
 
 namespace Endeavors\MaxMD\Api\Auth\Auth;
 
-use Endeavors\MaxMD\Support\PatientRegistrationSoapClient;
+use Endeavors\MaxMD\Support\Client;
 use Endeavors\MaxMD\Api\Auth\Auth\Contracts\IAuthenticate;
 
-class PatientRegistrationAuth extends BaseAuth implements IAuthenticate
+class PatientRegistration extends BaseAuth implements IAuthenticate
 {
     protected $response;
     
@@ -17,9 +17,8 @@ class PatientRegistrationAuth extends BaseAuth implements IAuthenticate
      */
     public function Login($username, $password)
     {
-        $client = PatientRegistrationSoapClient::getInstance();
         $user = ['username' => $username, 'password' => $password];
-        $this->response = $client->Login($user);
+        $this->response = Client::PatientRegistration()->Login($user);
         return $this;
     }
 }
