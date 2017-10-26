@@ -1,0 +1,35 @@
+{
+    "name": "endeavors/maxmd-apiauth",
+    "description": "Provide an easy api to integrate with maxmd",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adam Rodriguez",
+            "email": "adam_rodriguez@bitbucket.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "../support"
+        }
+    ],
+    "require": {
+        "endeavors/maxmd-support": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Endeavors\\MaxMD\\Api\\Auth\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Endeavors\\MaxMD\\Api\\Auth\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.2.*"
+    }
+}
