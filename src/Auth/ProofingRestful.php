@@ -4,6 +4,7 @@ namespace Endeavors\MaxMD\Api\Auth\Auth;
 
 use Endeavors\MaxMD\Support\Client;
 use Endeavors\MaxMD\Api\Auth\Auth\Contracts\IAuthenticate;
+use Endeavors\MaxMD\Api\Auth\Session;
 
 class ProofingRestful extends BaseAuth implements IAuthenticate
 {

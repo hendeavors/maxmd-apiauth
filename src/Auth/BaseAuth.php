@@ -15,13 +15,7 @@ abstract class BaseAuth implements IAuthenticate
      */
     public function Session()
     {
-        $session = new Session();
-
-        if($this->passes()) {
-            $session = Session::getInstance($this->root()->sessionId);
-        }
-
-        return $session;
+        return Session::getInstance($this->root()->sessionId);
     }
     
     /**
@@ -32,11 +26,18 @@ abstract class BaseAuth implements IAuthenticate
     {
         if( null === $this->raw() ) {
             return json_decode(json_encode([
-                'success' => false
+                'success' => false,
+                'sessionId' => null
             ]));
         }
+        
+        $result = $this->raw()->return;
 
-        return $this->raw()->return;
+        if ( ! property_exists($result, 'sessionId' )) {
+            $result->sessionId = null;
+        }
+
+        return $result;
     }
     
     /**

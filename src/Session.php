@@ -33,6 +33,16 @@ class Session
 
         return static::instance();
     }
+
+    public static function check()
+    {
+        return static::getInstance()->Valid();
+    }
+
+    public static function getId()
+    {
+        return static::getInstance()->Id();
+    }
     
     /**
      * The session id
@@ -59,6 +69,14 @@ class Session
     {
         return $this->LoginTime() + 10;
     }
+
+    /**
+     * The expire time in minutes
+     */
+    public function ExpiresIn()
+    {
+        return $this->ExpiresAt() - $this->now();
+    }
     
     /**
      * Is now greater than the login time plus 10 minutes
@@ -66,7 +84,14 @@ class Session
      */
     public function Expired()
     {
-        return (time() / 60) >= $this->ExpiresAt();
+        // static::$instance
+        $expired = $this->now() >= $this->ExpiresAt();
+
+        if( true === $expired ) {
+            static::$instance = null;
+        }
+
+        return $expired;
     }
     
     /**
@@ -84,5 +109,13 @@ class Session
     public function Active()
     {
         return ! $this->Expired();
+    }
+    
+    /**
+     * now in minutes
+     */
+    protected function now()
+    {
+        return time() / 60;
     }
 }
