@@ -14,6 +14,7 @@ class ProofingRestful extends BaseAuth implements IAuthenticate
     {
         $user = ['username' => $username, 'password' => $password];
         $this->response = (object)['return' => json_decode(Client::ProofingRest()->Post('personal/logIn', $user, array("Accept: application/json", "Content-Type: application/json")))];
+        $this->Session();
         return $this;
     }
 }

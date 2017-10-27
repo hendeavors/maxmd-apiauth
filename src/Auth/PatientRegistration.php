@@ -19,6 +19,7 @@ class PatientRegistration extends BaseAuth implements IAuthenticate
     {
         $user = ['username' => $username, 'password' => $password];
         $this->response = Client::PatientRegistration()->Login($user);
+        $this->Session();
         return $this;
     }
 }
