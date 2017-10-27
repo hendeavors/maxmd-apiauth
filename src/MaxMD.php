@@ -32,4 +32,12 @@ final class MaxMD
     {
         return (new Auth\PatientRegistration())->Login($username, $password);
     }
+    
+    /**
+     * void
+     */
+    public static function Logout()
+    {
+        return (new Auth\ProofingRestful())->Logout();
+    }
 }

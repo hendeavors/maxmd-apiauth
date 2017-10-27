@@ -93,6 +93,13 @@ class Session
 
         return $expired;
     }
+
+    public function Expire()
+    {
+        $this->loginTime = $this->loginTime - 600;
+
+        static::$instance = null;
+    }
     
     /**
      * Alias

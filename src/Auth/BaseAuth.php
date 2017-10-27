@@ -10,6 +10,10 @@ use Endeavors\MaxMD\Api\Auth\Auth\Contracts\IAuthenticate;
  */
 abstract class BaseAuth implements IAuthenticate
 {
+    public function Logout()
+    {
+        $this->Session()->Expire();
+    }
     /**
      * Create a session if login is successful
      */

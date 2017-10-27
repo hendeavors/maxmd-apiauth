@@ -8,4 +8,9 @@ interface IAuthenticate
      * @return IAuthenticate
      */
     function Login($username, $password);
+    
+    /**
+     * void
+     */
+    function Logout();
 }
