@@ -13,11 +13,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/hendeavors/maxmd-support.git"
+            "url": "https://github.com/bpedroza/maxmd-support.git"
         }
     ],
     "require": {
-        "endeavors/maxmd-support": "*"
+        "endeavors/maxmd-support": "developer-options-dev"
     },
     "autoload": {
         "psr-4": {
